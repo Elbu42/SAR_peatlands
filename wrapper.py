@@ -137,9 +137,9 @@ def s1_preproc(params):
     s1 = ee.ImageCollection('COPERNICUS/S1_GRD_FLOAT')\
         .filter(ee.Filter.eq('instrumentMode', 'IW'))\
         .filter(ee.Filter.eq('resolution_meters', 10)) \
-        .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VH'))\
         .filterDate(START_DATE, STOP_DATE) \
-        .filter(ee.Filter.calendarRange(params['START_MONTH'], params['STOP_MONTH'], 'month'))\
+        .filter(ee.Filter.calendarRange('START_MONTH','STOP_MONTH', 'month'))\
+        .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VH'))\
         .filterBounds(ROI)
 
     if (PLATFORM_NUMBER=='A' or PLATFORM_NUMBER=='B' ):
