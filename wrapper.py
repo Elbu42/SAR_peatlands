@@ -58,8 +58,6 @@ def s1_preproc(params):
     DEM = params['DEM']
     TERRAIN_FLATTENING_ADDITIONAL_LAYOVER_SHADOW_BUFFER = params['TERRAIN_FLATTENING_ADDITIONAL_LAYOVER_SHADOW_BUFFER']
     FORMAT = params['FORMAT']
-    START_MONTH = params['START_MONTH']
-    STOP_MONTH = params['STOP_MONTH']
     START_DATE = params['START_DATE']
     STOP_DATE = params['STOP_DATE']
     ROI = params['ROI']
@@ -137,7 +135,6 @@ def s1_preproc(params):
     s1 = ee.ImageCollection('COPERNICUS/S1_GRD_FLOAT')\
         .filter(ee.Filter.eq('instrumentMode', 'IW'))\
         .filter(ee.Filter.eq('resolution_meters', 10)) \
-        .filter(ee.Filter.calendarRange(START_MONTH, STOP_MONTH, 'month'))\
         .filterDate(START_DATE, STOP_DATE) \
         .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VH'))\
         .filterBounds(ROI)
