@@ -137,7 +137,7 @@ def s1_preproc(params):
         .filter(ee.Filter.eq('resolution_meters', 10)) \
         .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VH'))\
         .filterDate(START_DATE, STOP_DATE) \
-        .filter(ee.Filter.calendarRange(params.START_MONTH,params.STOP_MONTH,'month'))\
+        .filter(ee.Filter.calendarRange(START_MONTH,STOP_MONTH,'month'))\
         .filterBounds(ROI)
 
     if (PLATFORM_NUMBER=='A' or PLATFORM_NUMBER=='B' ):
